@@ -1,6 +1,5 @@
 import java.io.File
 import com.github.tototoshi.csv._
-
 import scala.collection.immutable
 
 object KMeans {
