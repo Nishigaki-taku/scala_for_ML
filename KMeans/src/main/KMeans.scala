@@ -4,7 +4,7 @@ import com.github.tototoshi.csv._
 
 import scala.collection.immutable
 
-object SettingUpKmeans {
+object KMeans {
   def main(args: Array[String]): Unit = {
     val reader = CSVReader.open(new File("IRIS.csv"))
     val members: Vector[Vector[Double]] = reader.all().tail.map(v => v.map(_.toDouble).toVector).toVector
