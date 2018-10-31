@@ -17,9 +17,9 @@ object KMeans {
 
   def KMeans(clusters: Int, data: Data, iteration: Int): Labels = {
     lazy val centroids = Vector(
-      Vector(5.0, 3.5, 1.0, 0.1),
-      Vector(5.5, 2.0, 3.8, 1.1),
-      Vector(8.2, 4.2, 7.1, 3.0)
+      Vector(5.006, 3.418, 1.464, 0.244),
+      Vector(5.936, 2.77, 4.26, 1.326),
+      Vector(6.588, 2.974, 5.552, 2.026)
     )
     val (clustered: Centroids, _: Int) = MoveCentroid(data, centroids, iteration)
     data.map(nearest(clustered, _))
