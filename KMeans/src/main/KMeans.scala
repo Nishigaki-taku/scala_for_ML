@@ -24,7 +24,7 @@ object KMeans {
     data.map(nearest(_, clustered))
   }
 
-  def run(data: Data, centroids: Centroids, iteration: Int): (Centroids, Int) = {
+  def MoveCentroid(data: Data, centroids: Centroids, iteration: Int): (Centroids, Int) = {
     iteration match {
       case 0 => (centroids, iteration)
       case _ =>
@@ -37,7 +37,7 @@ object KMeans {
         }
         println(newCentroids)
         println("----------------------------------------------------------------------")
-        run(data, newCentroids.toVector, iteration - 1)
+        MoveCentroid(data, newCentroids.toVector, iteration - 1)
     }
   }
 
