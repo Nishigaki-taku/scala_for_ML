@@ -5,11 +5,9 @@ object KMeans {
   def main(args: Array[String]): Unit = {
         val reader = CSVReader.open(new File("IRIS.csv"))
         val data: Vector[Vector[Double]] = reader.all().tail.map(v => v.map(_.toDouble).toVector).toVector
-        println(data.head)
-
+      
         val labels = kMeans(3, data, 10)
         println(labels)
-
   }
 
   type Centroids = Vector[Vector[Double]]
@@ -17,15 +15,12 @@ object KMeans {
   type Labels    = Vector[Int]
 
   def kMeans(clusters: Int, data: Vector[Vector[Double]], iteration: Int): Labels = {
-
     lazy val centroids = Vector(
       Vector(5.0, 3.5, 1.0, 0.1),
       Vector(5.5, 2.0, 3.8, 1.1),
       Vector(8.2, 4.2, 7.1, 3.0)
     )
-
     val (clustered, _) = run(data, centroids, iteration)
-
     data.map(nearest(_, clustered))
   }
 
@@ -34,7 +29,6 @@ object KMeans {
       case 0 => (centroids, iteration)
       case _ =>
         val labels: Vector[Int] = data.map(nearest(_, centroids))
-        println(labels)
 
         val newCentroids = for {
           i <- centroids.indices
@@ -46,7 +40,6 @@ object KMeans {
         run(data, newCentroids.toVector, iteration - 1)
     }
   }
-
 
   def nearest(vec: Vector[Double], centroids: Vector[Vector[Double]]): Int = {
     val m = centroids.zipWithIndex.minBy {
