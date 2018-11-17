@@ -31,7 +31,6 @@ object KMeans {
       case 0 => (centroids, iteration)
       case _ =>
         val labels: Vector[Int] = data.map(nearest(centroids, _))
-
         val newCentroids = for {
           i <- centroids.indices
         } yield {
